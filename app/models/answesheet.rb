@@ -1,0 +1,2 @@
+class Answesheet < ApplicationRecord
+end
