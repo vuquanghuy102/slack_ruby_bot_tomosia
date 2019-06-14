@@ -10,6 +10,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="page-container">
+      <%= render  "layouts/sidebar" %>
+      <%= render  "layouts/header" %>
+      <div class="main-content-inner">
+        <div class="row">
+          <div class="col-12 mt-5">
+            <div class="card">
+              <div class="card-body">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

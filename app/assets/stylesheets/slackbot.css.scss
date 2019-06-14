@@ -1,0 +1,36 @@
+.container-login100 {
+  background-image: url('../../images/bg-01.jpg');
+}
+
+label,input{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.form-check {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.dropdown-item {
+  text-align: center;
+}
+
+.align-items-center {
+  // border: 2px solid red;
+  background-color: #4CAF50;
+  border-radius: 0px 15px 15px 0px;
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 13px;
+  right: 0px;
+}
+
+.dropdown-menu {
+  text-align: center !important;
+}

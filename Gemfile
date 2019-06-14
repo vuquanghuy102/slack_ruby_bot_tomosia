@@ -15,6 +15,9 @@ gem 'dotenv-rails'
 gem 'slack-ruby-bot'
 gem 'celluloid-io'
 gem 'devise'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'font-awesome-rails'
 gem 'whenever', require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 
