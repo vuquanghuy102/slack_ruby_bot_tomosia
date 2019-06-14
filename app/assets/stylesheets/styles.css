@@ -1,0 +1,13 @@
+.container-login100 {
+  background-image: url('../../images/bg-01.jpg');
+}
+
+label,input{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.form-check {
+  padding-top: 20px;
+  text-align: center;
+}
