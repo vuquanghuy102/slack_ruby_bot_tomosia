@@ -1,0 +1,11 @@
+<% if flash[:success] %>
+  <div class="notification is-primary global-notification">
+    <p class="alert alert-success"><%= flash[:success] %></p>
+  </div>
+<% end %>
+
+<% if flash[:error] %>
+  <div class="notification is-danger global-notification">
+    <p class="alert alert-danger"><%= flash[:error] %></p>
+  </div>
+<% end %>

@@ -2,6 +2,10 @@
   background-image: url('../../images/bg-01.jpg');
 }
 
+.logo-slack {
+  width: 130px;
+}
+
 label,input{
   display: inline-block;
   vertical-align: middle;
@@ -17,10 +21,11 @@ label,input{
 }
 
 .align-items-center {
-  // border: 2px solid red;
+  border-radius: 15px;
+  // margin-left: 7px !important;
   background-color: #4CAF50;
-  border-radius: 0px 15px 15px 0px;
-  width: 100%;
+  border-radius: 15px;
+  width: 102%;
   height: 60px;
   position: relative;
 }
@@ -33,4 +38,41 @@ label,input{
 
 .dropdown-menu {
   text-align: center !important;
+}
+
+.metismenu li:hover > a,
+.metismenu li.active > a {
+  color: #ff6600;
+  border-radius: 15px;
+  text-decoration: none;
+}
+
+.metismenu > li:hover > a, .metismenu > li.active > a {
+  background: #ffccff;
+  text-decoration: none;
+}
+
+.logo > a > h2 {
+  color: #660066;
+}
+
+.logo > a:hover {
+  text-decoration: none;
+}
+
+.information-item {
+  display: flex;
+  justify-content: center;
+}
+.icon-edit {
+  padding-top: 2px;
+  padding-right: 5px;
+}
+
+.text-uppercase > tr > th {
+  text-align: center;
+}
+
+.body-table > tr > th {
+  text-align: center;
 }
