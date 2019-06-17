@@ -1,0 +1,38 @@
+<div class="input-group mb-3">
+  <h3>List Questions</h3>
+</div>
+<%= render  "layouts/flash_message" %>
+<div class="single-table">
+  <div class="table-responsive">
+    <table class="table table-bordered text-center">
+      <thead class="text-uppercase">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Title</th>
+        </tr>
+      </thead>
+      <tbody class="body-table">
+        <% if @questions.length > 0 %>
+          <% @questions.each_with_index do |question, index| %>
+            <tr>
+              <th scope="row"><%= link_to index + 1, admin_question_path(question) %></th>
+              <td><%= question.title %></td>
+              <td>
+                <div class="information-item">
+                  <div class="icon-edit">
+                    <%= link_to raw('<i class="fa fa-pencil-square-o fa-lg"></i>'), edit_admin_question_path(question)%>
+                  </div>
+                  <div class="icon-delete">
+                    <%= link_to raw('<i class="fa fa-trash fa-lg delete-icon"></i>'),
+                      admin_question_path(question),
+                      method: :delete,
+                      remote: true,
+                      data: { confirm: "Bạn chắc chắn muốn xoá không?" }
+                    %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>

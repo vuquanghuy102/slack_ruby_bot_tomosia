@@ -1,11 +1,65 @@
 <div class="sidebar-menu">
   <div class="sidebar-header">
     <div class="logo">
-      <a href=""><h2>SlackBot</h2></a>
+      <%= image_tag("images/slack.png", class: "logo-slack") %></br>
+      <a href="/"><h2>SlackBot</h2></a>
     </div>
     <div class="main-menu">
       <div class="menu-inner">
-        
+        <nav>
+          <ul class="metismenu" id="menu">
+            <li class="<%= add_class_active('admin/answesheets') %>">
+              <a href="javascript:void(0)" data-toggle="collapse" data-target="#sidebar-answesheets"><%= t('label.sidebar.answesheets') %></a>
+              <ul class="collapse <%= display_submenu('admin/answesheets') %> " id="sidebar-answesheets">
+                <li class="<%= add_active_sub_menu('admin/answesheets') %>">
+                  <%= link_to "Index", admin_answesheets_path %>
+                </li>
+                <li class="<%= add_active_sub_menu_action_new('admin/answesheets') %>">
+                  <%= link_to "Add Answesheets", new_admin_answesheet_path %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="metismenu" id="menu">
+            <li class="<%= add_class_active('admin/questions') %>">
+              <a href="javascript:void(0)" data-toggle="collapse" data-target="#sidebar-questions"><%= t('label.sidebar.questions') %></a>
+              <ul class="collapse <%= display_submenu('admin/questions') %> " id="sidebar-questions">
+                <li class="<%= add_active_sub_menu('admin/questions') %>">
+                  <%= link_to "Index", admin_questions_path %>
+                </li>
+                <li class="<%= add_active_sub_menu_action_new('admin/questions') %>">
+                  <%= link_to "Add Questions", new_admin_question_path %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="metismenu" id="menu">
+            <li class="<%= add_class_active('admin/answers') %>">
+              <a href="javascript:void(0)" data-toggle="collapse" data-target="#sidebar-answers"><%= t('label.sidebar.answers') %></a>
+              <ul class="collapse <%= display_submenu('admin/answers') %> " id="sidebar-answers">
+                <li class="<%= add_active_sub_menu('admin/answers') %>">
+                  <%= link_to "Index", admin_answers_path %>
+                </li>
+                <li class="<%= add_active_sub_menu_action_new('admin/questions') %>">
+                  <%= link_to "Add Answers", new_admin_answer_path %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="metismenu" id="menu">
+            <li class="<%= add_class_active('admin/users') %>">
+              <a href="javascript:void(0)" data-toggle="collapse" data-target="#sidebar-users"><%= t('label.sidebar.users') %></a>
+              <ul class="collapse <%= display_submenu('admin/users') %> " id="sidebar-users">
+                <li class="<%= add_active_sub_menu('admin/users') %>">
+                  <%= link_to "Index", admin_users_path %>
+                </li>
+                <li class="<%= add_active_sub_menu_action_new('admin/users') %>">
+                  <%= link_to "Add Users", new_admin_user_path %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
