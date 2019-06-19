@@ -1,17 +1,13 @@
 class Admin::UsersController < Admin::AdminBaseController
+  before_action :load_user, only: [:show]
+
   def index
-    
+    @users = User.paginate(page: params[:page], per_page: 15)
   end
 
-  def show
-    
-  end
+  private
 
-  def new
-    
-  end
-
-  def create
-    
+  def load_user
+    @users ||= User.find(params[:id])
   end
 end

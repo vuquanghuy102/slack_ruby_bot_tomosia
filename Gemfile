@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'whenever', require: false
+gem 'will_paginate-bootstrap4'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
