@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'profile' => 'admins#show'
+    resource :profile, only: [:show, :update]
     resources :users, only: [:index, :show]
     resources :questions
     resources :answers

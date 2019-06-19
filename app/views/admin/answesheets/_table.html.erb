@@ -4,22 +4,22 @@
       <thead class="text-uppercase">
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Date</th>
-          <th scope="col">Question</th>
-          <th scope="col">Real Name</th>
-          <th scope="col">Answer</th>
-          <th scope="col">Action</th>
+          <th scope="col"><%= "Ngày" %></th>
+          <th scope="col"><%= "Câu hỏi" %></th>
+          <th scope="col"><%= "Tên người trả lời" %></th>
+          <th scope="col"><%= "Câu trả lời" %></th>
+          <th scope="col"><%= "Hành động" %></th>
         </tr>
       </thead>
       <tbody class="body-table">
         <% if @answesheets.length > 0 %>
           <% @answesheets.each_with_index do |answesheet, index| %>
             <tr>
-              <%# if params['page'].present? && params['page'] != "1" %>
-                <!-- <th scope="row"><%#= link_to ((index + 1) * JSON.parse(params['page'])) + 3, admin_answesheet_path(answesheet) %></th> -->
-              <%# else %>
+              <% if params['page'].present? && params['page'] != "1" %>
+                <th scope="row"><%= link_to index + 1 + (15 * (JSON.parse(params[:page]) - 1)), admin_answesheet_path(answesheet) %></th>
+              <% else %>
                 <th scope="row"><%= link_to index + 1, admin_answesheet_path(answesheet) %></th>
-              <%# end %>
+              <% end %>
               <td><%= answesheet.date %></td>
               <td><%= answesheet.question_title %></td>
               <td><%= answesheet.real_name %></td>
