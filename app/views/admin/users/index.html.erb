@@ -1,1 +1,29 @@
-index user
+<div class="input-group mb-3">
+  <h3>List Users</h3>
+</div>
+<%= render  "layouts/flash_message" %>
+<div class="single-table">
+  <div class="table-responsive">
+    <table class="table table-bordered text-center">
+      <thead class="text-uppercase">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Real Name</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody class="body-table">
+        <% if @users.length > 0 %>
+          <% @users.each_with_index do |user, index| %>
+            <tr>
+              <th scope="row"><%= link_to index + 1, admin_user_path(user) %></th>
+              <td><%= user.real_name %></td>
+              <td><%= user.email %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= render "layouts/will_paginate", data: @users %>
+  </div>
+</div>

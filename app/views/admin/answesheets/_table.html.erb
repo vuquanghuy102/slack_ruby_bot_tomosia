@@ -1,0 +1,46 @@
+<div class="single-table">
+  <div class="table-responsive">
+    <table class="table table-bordered text-center">
+      <thead class="text-uppercase">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Date</th>
+          <th scope="col">Question</th>
+          <th scope="col">Real Name</th>
+          <th scope="col">Answer</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody class="body-table">
+        <% if @answesheets.length > 0 %>
+          <% @answesheets.each_with_index do |answesheet, index| %>
+            <tr>
+              <%# if params['page'].present? && params['page'] != "1" %>
+                <!-- <th scope="row"><%#= link_to ((index + 1) * JSON.parse(params['page'])) + 3, admin_answesheet_path(answesheet) %></th> -->
+              <%# else %>
+                <th scope="row"><%= link_to index + 1, admin_answesheet_path(answesheet) %></th>
+              <%# end %>
+              <td><%= answesheet.date %></td>
+              <td><%= answesheet.question_title %></td>
+              <td><%= answesheet.real_name %></td>
+              <td><%= answesheet.answer_content %></td>
+              <td>
+                <div class="information-item">
+                  <div class="icon-delete">
+                    <%= link_to raw('<i class="fa fa-trash fa-lg delete-icon"></i>'),
+                      admin_answesheet_path(answesheet),
+                      method: :delete,
+                      remote: true,
+                      data: { confirm: "Bạn chắc chắn muốn xoá không?" }
+                    %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= render "layouts/will_paginate", data: @answesheets %>
+  </div>
+</div>

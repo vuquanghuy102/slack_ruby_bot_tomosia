@@ -4,10 +4,12 @@ class ChatBot
     users = client.users_list.members.select do |member|
       member.profile.email.present? && member.is_bot == false && member.deleted == false
     end
+    question = Question.order("RAND()").first
+    answers = question.answers
     users.each do |user|
       content = {
         channel: user.id,
-        text: "Hôm nay bạn cảm thấy thế nào?",
+        text: question.title,
         as_user:  "true",
         bot_id: "UKC5GDS8M",
         attachments: [{
@@ -15,26 +17,14 @@ class ChatBot
           color: "#3AA3E3",
           attachment_type: "default",
           callback_id: "select_status",
-          actions: [
+          actions: answers.map do |answer|
             {
-              name: "good",
-              text: "Good",
+              name: answer.content,
+              text: answer.content,
               type: "button",
-              value: "good"
-            },
-            {
-              name: "bad",
-              text: "Bad",
-              type: "button",
-              value: "bad",
-              confirm: {
-                title: "Are you sure?",
-                text: "Are you really feel bad?",
-                ok_text: "Yes",
-                dismiss_text: "No"
-              }
+              value: answer.id
             }
-          ]
+          end
         }]
       }
       client.chat_postMessage(content)

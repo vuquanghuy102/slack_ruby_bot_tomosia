@@ -18,6 +18,16 @@ class SlackController < ApplicationController
 
   def button
     request_data = JSON.parse(params.dig('payload'))
+
+    answesheet = Answesheet.new
+    answesheet.question_title = request_data['original_message']['text']
+    answesheet.question_id = Question.find_by(title: request_data['original_message']['text']).id
+    answesheet.real_name = request_data['user']['name']
+    answesheet.user_id = User.find_by(real_name: request_data['user']['name']).id
+    answesheet.answer_content = request_data['actions'].first['name']
+    answesheet.answer_id = request_data['actions'].first['value']
+    answesheet.date = Time.now.strftime("%d-%m-%Y")
+
     url = request_data['response_url']
     case request_data['callback_id']
     when 'select_status'
@@ -25,7 +35,9 @@ class SlackController < ApplicationController
       msg['text'] = ':heavy_check_mark: Cảm ơn bạn đã bỏ phiếu, chúc bạn làm việc vui vẻ :star-struck:'
       msg['attachments'] = []
 
-      SlackController.send_response(url, msg)
+      if answesheet.save
+        SlackController.send_response(url, msg)
+      end
     end
   end
 

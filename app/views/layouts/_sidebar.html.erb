@@ -14,9 +14,6 @@
                 <li class="<%= add_active_sub_menu('admin/answesheets') %>">
                   <%= link_to "Index", admin_answesheets_path %>
                 </li>
-                <li class="<%= add_active_sub_menu_action_new('admin/answesheets') %>">
-                  <%= link_to "Add Answesheets", new_admin_answesheet_path %>
-                </li>
               </ul>
             </li>
           </ul>
@@ -52,9 +49,6 @@
               <ul class="collapse <%= display_submenu('admin/users') %> " id="sidebar-users">
                 <li class="<%= add_active_sub_menu('admin/users') %>">
                   <%= link_to "Index", admin_users_path %>
-                </li>
-                <li class="<%= add_active_sub_menu_action_new('admin/users') %>">
-                  <%= link_to "Add Users", new_admin_user_path %>
                 </li>
               </ul>
             </li>
