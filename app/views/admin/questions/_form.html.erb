@@ -1,7 +1,7 @@
 <%= form_for :questions, url: api, method: method  do |f| %>
   <%= render  "layouts/flash_message" %>
   <div class="form-group">
-    <label for="example-text-input" class="col-form-label"><%= "Question Title"%></label>
+    <label for="example-text-input" class="col-form-label"><%= "Tiêu đề câu hỏi"%></label>
     <span class="required">*</span>
     <%= f.text_field :title, { class: 'form-control', required: true }%>
   </div>

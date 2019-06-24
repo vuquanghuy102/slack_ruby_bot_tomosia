@@ -2,7 +2,19 @@ class Admin::AnswesheetsController < Admin::AdminBaseController
   before_action :load_answesheet, only: [:show, :edit, :update, :destroy]
 
   def index
-    @answesheets = Answesheet.paginate(page: params[:page], per_page: 15)
+    if params[:search]
+      if params[:search][:question_id].present? && params[:search][:date].empty?
+        @answesheets = Answesheet.search_by_question_id(params[:search][:question_id]).paginate(page: params[:page], per_page: 15)
+      elsif params[:search][:question_id].empty? && params[:search][:date].present?
+        @answesheets = Answesheet.search_by_date(params[:search][:date]).paginate(page: params[:page], per_page: 15)
+      elsif params[:search][:question_id].empty? && params[:search][:date].empty?
+        @answesheets = Answesheet.paginate(page: params[:page], per_page: 15)
+      else
+        @answesheets = Answesheet.search_by_date_and_question_id(params[:search][:date], params[:search][:question_id]).paginate(page: params[:page], per_page: 15)
+      end
+    else
+      @answesheets = Answesheet.paginate(page: params[:page], per_page: 15)
+    end
   end
 
   def show

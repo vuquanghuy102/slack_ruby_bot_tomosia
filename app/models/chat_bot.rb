@@ -13,7 +13,7 @@ class ChatBot
         as_user:  "true",
         bot_id: "UKC5GDS8M",
         attachments: [{
-          text: "Bỏ phiếu nha nã vào nút dưới nhé :3",
+          text: "Bỏ phiếu nha",
           color: "#3AA3E3",
           attachment_type: "default",
           callback_id: "select_status",

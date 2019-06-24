@@ -1,5 +1,32 @@
 <div class="input-group mb-3">
-  <h3>List Answesheets</h3>
+  <h3><%= "Danh sách câu trả lời của người dùng" %></h3>
 </div>
 <%= render  "layouts/flash_message" %>
-<%= render "table" %>
+
+<div class="row form-search">
+  <%= form_for :search, method: "get" do |f| %>
+    <div class="col-md-4">
+      <label for="example-room-input" class="col-form-label"><%= "Ngày"%></label>
+      <%= f.date_field :date, class: "form-control" %>
+    </div>
+
+    <div class="col-md-4 form-group">
+      <label for="example-room-input" class="col-form-label"><%= "Câu hỏi"%></label>
+      <%= f.select(
+        "question_id", Question.all.collect {|q| [ q.title, q.id ] },
+        { prompt: t("Chọn câu hỏi", name: "Question")},
+        { class: 'form-control'})
+      %>
+    </div>
+    <div class="col-md-4">
+      <%= submit_tag "Tìm kiếm", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <% if @answesheets.present? %>
+    <%= render "table" %>
+  <% else %>
+    <h3><%= "Không có bản ghi nào" %></h3>
+  <% end %>
+</div>
