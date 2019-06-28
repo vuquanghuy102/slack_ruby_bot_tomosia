@@ -6,11 +6,11 @@ class Admin::QuestionsController < Admin::AdminBaseController
   end
 
   def show
-    @answers = Answer.where(question_id: @questions.id)
+    @answers = Answer.where(question_id: @question.id)
   end
 
   def destroy
-    if @questions.destroy
+    if @question.destroy
       flash[:success] = "Đã xoá thành công"
       redirect_to admin_questions_path
     else
@@ -19,7 +19,10 @@ class Admin::QuestionsController < Admin::AdminBaseController
     end
   end
 
-  def new; end
+  def new
+    @question = Question.new
+    @question.answers.build
+  end
 
   def create
     @question = Question.new(question_params)
@@ -35,7 +38,8 @@ class Admin::QuestionsController < Admin::AdminBaseController
   def edit; end
 
   def update
-    if @questions.update_attributes(question_params)
+    Answer.find_question(@question).destroy_all
+    if @question.update_attributes(question_params)
       flash[:success] = "Câu hỏi đã cập nhật thành công"
       redirect_to admin_questions_path
     else
@@ -47,12 +51,16 @@ class Admin::QuestionsController < Admin::AdminBaseController
   private
 
   def load_question
-    @questions ||= Question.find(params[:id])
+    @question ||= Question.find(params[:id])
   end
 
   def question_params
-    params.require(:questions).permit(
-      :title
+    params.require(:question).permit(
+      :title,
+      answers_attributes:[
+        :content,
+        :_destroy
+      ]
     )
   end
 end

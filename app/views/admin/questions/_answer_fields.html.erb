@@ -1,0 +1,9 @@
+<div class="nested-fields sub_answers">
+  <div class="form-group answer">
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+  <%= link_to_remove_association ('<i class="fa fa-trash"></i>').html_safe, f,
+    class: "delete-icon",
+    onclick: "statusBtnDeleteIconFormCoCoon('remove')"
+  %>
+</div>
