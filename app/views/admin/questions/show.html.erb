@@ -4,7 +4,7 @@
 <%= render  "layouts/flash_message" %>
 <div class="form-group">
   <label for="example-text-input" class="col-form-label"><%= "Tiêu đề câu hỏi" %>:</label>
-  <span class="col-form-label"><%= @questions.title %></span>
+  <span class="col-form-label"><%= @question.title %></span>
 </div>
 
 <div class="form-group">
@@ -21,7 +21,7 @@
         <% if @answers.length > 0 %>
           <% @answers.each_with_index do |answer, index| %>
             <tr>
-              <th scope="row"><%= link_to index + 1, admin_answer_path(answer) %></th>
+              <th scope="row"><%= index + 1 %></th>
               <td><%= answer.content %></td>
             </tr>
           <% end %>
@@ -34,11 +34,11 @@
 </div>
 <div class="form-group">
   <%= link_to raw("<i class='fa fa-pencil-square-o fa-lg'></i><span> Sửa </span>"),
-    edit_admin_question_path(@questions),
+    edit_admin_question_path(@question),
     class: "btn btn-primary"
   %>
   <%= link_to raw("<i class='fa fa-trash fa-lg'></i><span> Xóa </span>"),
-    admin_question_path(@questions), class: "btn btn-danger",
+    admin_question_path(@question), class: "btn btn-danger",
     method: :delete,
     remote: true,
     data: { confirm: "Bạn chắc chắn muốn xoá không?" }
