@@ -80,3 +80,16 @@ label,input{
 .pagination {
   display: block !important;
 }
+
+.sub_answers {
+  display: flex;
+}
+
+.answer {
+  width: 350px;
+  padding-right: 10px;
+}
+
+.delete-icon {
+  padding-top: 6px;
+}
