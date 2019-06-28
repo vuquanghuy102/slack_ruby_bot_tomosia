@@ -31,19 +31,6 @@
             </li>
           </ul>
           <ul class="metismenu" id="menu">
-            <li class="<%= add_class_active('admin/answers') %>">
-              <a href="javascript:void(0)" data-toggle="collapse" data-target="#sidebar-answers"><%= t('label.sidebar.answers') %></a>
-              <ul class="collapse <%= display_submenu('admin/answers') %> " id="sidebar-answers">
-                <li class="<%= add_active_sub_menu('admin/answers') %>">
-                  <%= link_to "Index", admin_answers_path %>
-                </li>
-                <li class="<%= add_active_sub_menu_action_new('admin/questions') %>">
-                  <%= link_to "Add Answers", new_admin_answer_path %>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="metismenu" id="menu">
             <li class="<%= add_class_active('admin/users') %>">
               <a href="javascript:void(0)" data-toggle="collapse" data-target="#sidebar-users"><%= t('label.sidebar.users') %></a>
               <ul class="collapse <%= display_submenu('admin/users') %> " id="sidebar-users">

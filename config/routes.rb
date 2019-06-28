@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     resource :profile, only: [:show, :update]
     resources :users, only: [:index, :show]
     resources :questions
-    resources :answers
     resources :answesheets
   end
 
